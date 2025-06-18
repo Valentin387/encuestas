@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
@@ -71,7 +72,30 @@ public class ResponseService {
         return true;
     }
 
+    public List<ResponseDto> getResponsesBySurveyId(String surveyId) {
+        return responseRepository.findBySurveyId(surveyId).stream()
+                .map(this::mapToDto)
+                .collect(Collectors.toList());
+    }
+
     public void deleteAll() {
         responseRepository.deleteAll();
+    }
+
+
+    private ResponseDto mapToDto(Response response) {
+        ResponseDto dto = new ResponseDto();
+        ResponseDto.RespondentDto respondentDto = new ResponseDto.RespondentDto();
+        respondentDto.setEmail(response.getRespondent().getEmail());
+        respondentDto.setFirstname(response.getRespondent().getFirstname());
+        respondentDto.setLastname(response.getRespondent().getLastname());
+        dto.setRespondent(respondentDto);
+        dto.setAnswers(response.getAnswers().stream().map(a -> {
+            ResponseDto.AnswerDto answerDto = new ResponseDto.AnswerDto();
+            answerDto.setQuestionId(a.getQuestionId());
+            answerDto.setAnswer(a.getAnswer());
+            return answerDto;
+        }).collect(Collectors.toList()));
+        return dto;
     }
 }

@@ -1,7 +1,9 @@
 package com.katadavivienda.encuestas.controller;
 
 import com.katadavivienda.encuestas.data.dto.SurveyDto;
+import com.katadavivienda.encuestas.data.dto.ResponseDto;
 import com.katadavivienda.encuestas.service.SurveyService;
+import com.katadavivienda.encuestas.service.ResponseService;
 import com.katadavivienda.encuestas.util.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -16,6 +18,9 @@ import java.util.Map;
 public class SurveyController {
     @Autowired
     private SurveyService surveyService;
+
+    @Autowired
+    private ResponseService responseService;
 
     @Autowired
     private JwtUtil jwtUtil;
@@ -44,6 +49,12 @@ public class SurveyController {
     public ResponseEntity<SurveyDto> getSurveyById(@PathVariable String id) {
         SurveyDto survey = surveyService.getSurveyById(id);
         return survey != null ? ResponseEntity.ok(survey) : ResponseEntity.notFound().build();
+    }
+
+    @GetMapping(value = "/{id}/responses", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<ResponseDto>> getResponsesBySurveyId(@PathVariable String id) {
+        List<ResponseDto> responses = responseService.getResponsesBySurveyId(id);
+        return ResponseEntity.ok(responses);
     }
 
     @DeleteMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
