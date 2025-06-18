@@ -3,6 +3,7 @@ package com.katadavivienda.encuestas.service;
 import com.katadavivienda.encuestas.data.dto.SurveyDto;
 import com.katadavivienda.encuestas.data.entity.Survey;
 import com.katadavivienda.encuestas.data.repository.SurveyRepository;
+import com.katadavivienda.encuestas.data.repository.ResponseRepository;
 import com.fasterxml.uuid.Generators;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
