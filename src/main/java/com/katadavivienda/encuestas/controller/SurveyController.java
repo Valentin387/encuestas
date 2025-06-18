@@ -45,12 +45,6 @@ public class SurveyController {
         return ResponseEntity.ok(surveys);
     }
 
-    @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<SurveyDto> getSurveyById(@PathVariable String id) {
-        SurveyDto survey = surveyService.getSurveyById(id);
-        return survey != null ? ResponseEntity.ok(survey) : ResponseEntity.notFound().build();
-    }
-
     @GetMapping(value = "/{id}/responses", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<ResponseDto>> getResponsesBySurveyId(@PathVariable String id) {
         List<ResponseDto> responses = responseService.getResponsesBySurveyId(id);
