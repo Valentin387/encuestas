@@ -138,3 +138,46 @@ Collection Name: responses
 | `DELETE` | `/admin/responses` | ✅    | Delete all responses |
 
 ---
+
+### 5. Project Structure
+```
+encuestas/
+├── src/
+│   ├── main/
+│   │   ├── java/
+│   │   │   └── com/katadavivienda/encuestas/
+│   │   │       ├── controller/
+│   │   │       │   ├── AuthController.java
+│   │   │       │   ├── SurveyController.java
+│   │   │       │   ├── ResponseController.java
+│   │   │       │   └── AdminController.java
+│   │   │       ├── data/
+│   │   │       │   ├── dto/
+│   │   │       │   │   ├── UserDto.java
+│   │   │       │   │   ├── TokenDto.java
+│   │   │       │   │   ├── SurveyDto.java
+│   │   │       │   │   └── ResponseDto.java
+│   │   │       │   ├── entity/
+│   │   │       │   │   ├── User.java
+│   │   │       │   │   ├── Survey.java
+│   │   │       │   │   └── Response.java
+│   │   │       │   └── repository/
+│   │   │       │       ├── UserRepository.java
+│   │   │       │       ├── SurveyRepository.java
+│   │   │       │       └── ResponseRepository.java
+│   │   │       ├── service/
+│   │   │       │   ├── UserService.java
+│   │   │       │   ├── SurveyService.java
+│   │   │       │   └── ResponseService.java
+│   │   │       ├── util/
+│   │   │       │   └── JwtUtil.java
+│   │   │       ├── config/
+│   │   │       │   └── SecurityConfig.java
+│   │   │       └── Application.java
+│   │   └── resources/
+│   │       └── application.properties
+├── .gitignore
+├── build.gradle.kts
+├── Procfile
+└── README.md
+```
