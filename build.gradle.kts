@@ -18,8 +18,18 @@ repositories {
 }
 
 dependencies {
-	implementation("org.springframework.boot:spring-boot-starter")
+	implementation("org.springframework.boot:spring-boot-starter-web")
+	implementation("org.springframework.boot:spring-boot-starter-security")
+	implementation("org.springframework.boot:spring-boot-starter-data-mongodb")
+	implementation("org.projectlombok:lombok")
+	annotationProcessor("org.projectlombok:lombok")
+	implementation("io.jsonwebtoken:jjwt-api:0.12.6")
+	runtimeOnly("io.jsonwebtoken:jjwt-impl:0.12.6")
+	runtimeOnly("io.jsonwebtoken:jjwt-jackson:0.12.6")
+	implementation("com.fasterxml.uuid:java-uuid-generator:5.1.0") // For UUID generation
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
+	testImplementation("org.junit.jupiter:junit-jupiter-api")
+	testImplementation("org.mockito:mockito-core")
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
