@@ -80,6 +80,7 @@ public class SurveyService {
 
     private SurveyDto mapToDto(Survey survey) {
         SurveyDto dto = new SurveyDto();
+        dto.setId(survey.getId());
         dto.setCompany(survey.getCompany());
         dto.setTitle(survey.getTitle());
         dto.setDescription(survey.getDescription());
